@@ -3,12 +3,14 @@
 import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL} from './constants'
 
 export function addProposal(){
+
   return (dispatch, getState) => {
   const form = getState().form;
+
     const proposal = {
-      name:form.proposal.name.value,
-      description:form.proposal.description.value,
-      stake:form.proposal.stake.value
+      name:form.proposal.values.name,
+      description:form.proposal.values.description,
+      stakes:form.proposal.values.stakes
     };
     dispatch({
        type: ADD_PROPOSAL,
@@ -34,7 +36,7 @@ export function requestProposals(){
     const exampleProposal = [{
        "name": "Hello Machine",
        "description": "This great example",
-       "stake":40
+       "stakes":40
     }]
     dispatch(receiveProposal(exampleProposal))
   }

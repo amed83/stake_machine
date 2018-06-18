@@ -1,32 +1,74 @@
-import React, { Component } from 'react';
-import { Input, Container, Button, Divider, Form} from 'semantic-ui-react';
+import React from 'react';
+import { Button} from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import {addProposal} from '../actions/index';
+import PropTypes from 'prop-types';
 
-const containerStyle = {
-    marginTop:"40px",
-    marginBottom:"10px"
-
+const formStyle = {
+    display:"flex",
+    justifyContent:"space-between",
+    width:"70%"
 }
 
-const formContainer = {
+const mainContainer = {
   display:"flex",
-  justifyContent:"space-around",
+  justifyContent:"center"
+}
+
+const validate = (values )=> {
+
+  const errors = {};
+
+  if(!values.name){
+    errors.name='Please provide a name'
+  }
+
+
+  if(!values.stakes){
+    errors.stakes= 'Please provide stakes'
+  }
+  console.log('errors ', errors )
+  return errors
 }
 
 
+const renderField = ({input,label, meta:{touched, error}})=> (
+
+      <div>
+        <input {...input} placeholder={label}/>
+        {touched && error && <span> {error}</span>}
+      </div>
 
 
-const CreateProposal = ({handleSubmit,onSubmit}) => {
+
+
+)
+
+
+const CreateProposal = ({handleSubmit, input}) => {
+
      return(
-       <div>
-           <h2>Hello Create Proposal </h2>
-           <form onSubmit={handleSubmit}>
+       <div style= {mainContainer}>
+
+           <form onSubmit={handleSubmit} style={formStyle}>
                <Field
-                 name="firstName"
-                 component="input"
-                />
-            <button type="submit">Submit </button>
+                 name="name"
+                 component={renderField}
+                 placeholder="Name"
+                  />
+                <Field
+                  name="description"
+                  component={renderField}
+                  placeholder="Description"
+                 />
+                 <Field
+                   name="stakes"
+                   component={renderField}
+                   placeholder="Stakes"
+                 />
+
+
+            <Button primary type="submit">Submit </Button>
           </form>
        </div>
 
@@ -35,10 +77,17 @@ const CreateProposal = ({handleSubmit,onSubmit}) => {
 
 
 
-const mapDispatchToProps = (dispatch) => ({
-  addProposal: () => dispatch(addProposal()),
-});
+
+const onSubmit = (values, dispatch) => {
+   dispatch(addProposal())
+};
+
+CreateProposal.propTypes = {
+  stakes:PropTypes.number
+}
 
 export default reduxForm({
-  form:'myForm',
-},mapDispatchToProps) (CreateProposal)
+  form:'proposal',
+  onSubmit,
+  validate
+}) (CreateProposal)

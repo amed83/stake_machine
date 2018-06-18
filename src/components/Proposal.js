@@ -1,11 +1,11 @@
 import React from 'react';
+import { List } from 'semantic-ui-react';
 
-
-const Proposal = ({name,description,stake}) => {
+const Proposal = ({name,description,stakes}) => {
     return (
-        <li>
-            {name } {description } { stake}
-        </li>
+        <List >
+            <List.Item> <b>Name:</b> {name }  <b>Description:</b> {description } <b>Stakes:</b> { stakes}    </List.Item>
+        </List>
 
     )
 }

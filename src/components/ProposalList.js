@@ -17,9 +17,10 @@ const ProposalList = ({proposals, onAdd }) => {
     return (
          <div>
             <Container >
+              <h3>Proposals </h3>
                 {proposalNodes}
             </Container >
-            <button onClick={onAdd}>Add Proposal </button>
+            <Button primary onClick={onAdd} style= {buttonStyle}>Add Proposal </Button>
          </div>
      )
 
@@ -27,20 +28,9 @@ const ProposalList = ({proposals, onAdd }) => {
 }
 
 
-const proposalContainer = {
-    marginTop:"20px",
-    display:"flex",
-    justifyContent:"center"
+const buttonStyle = {
+  marginTop:'20px'
 }
-
-
-  const containerStyle = {
-       marginTop:'40px',
-       display:"flex",
-       justifyContent:"space-around",
-       fontSize:'14px'
-
-  }
 
 
 

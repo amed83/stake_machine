@@ -1,34 +1,22 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import {addProposal} from '../actions/index'
+
 import {connect} from 'react-redux';
 
 import CreateProposal from '../components/CreateProposal';
 
-export const FormContainer = ({handleSubmit}) => {
-  const submitForm = (values)=> {
-      console.log('values ', values)
-  }
+export const FormContainer = ({handleSubmit,input}) => {
 
   return (
     <CreateProposal
-      onSubmit={submitForm}
       handleSubmit={handleSubmit}
+      <input {...input} placeholder={label} type={type}/>
     />
 
   );
 }
 
 
-// const mapDispatchToProps = (dispatch) => ({
-//   addProposal: () => dispatch(addProposal()),
-// });
-//
-//
-// export default connect(
-//   () => ({}),
-//   mapDispatchToProps,
-// )(FormContainer);
 
 
 
