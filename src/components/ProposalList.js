@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Container, Button } from 'semantic-ui-react'
+import { Container, Button, Divider } from 'semantic-ui-react'
 
 import Proposal from './Proposal'
 
@@ -11,16 +11,22 @@ const ProposalList = ({proposals, onAdd }) => {
      <Proposal
           key= {proposal.name + proposal.description}
           {...proposal}
+
       />
   ))
 
     return (
          <div>
-            <Container >
-              <h3>Proposals </h3>
-                {proposalNodes}
+            <Container  >
+              <div style= {buttonStyle}>
+                <h3>Proposals </h3>
+                <Button primary onClick={onAdd} >Add Proposal </Button>
+              </div>
+                <div  style= {listContainer}>
+                    {proposalNodes}
+                </div>
             </Container >
-            <Button primary onClick={onAdd} style= {buttonStyle}>Add Proposal </Button>
+
          </div>
      )
 
@@ -29,9 +35,14 @@ const ProposalList = ({proposals, onAdd }) => {
 
 
 const buttonStyle = {
-  marginTop:'20px'
+marginBottom:'20px'
 }
 
-
+const listContainer = {
+  display:"flex",
+  flexDirection:"column",
+  alignItems:"space-between"
+  // justifyContent:""
+}
 
 export default ProposalList

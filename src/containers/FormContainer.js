@@ -3,14 +3,14 @@ import { reduxForm } from 'redux-form';
 
 import {connect} from 'react-redux';
 
-import CreateProposal from '../components/CreateProposal';
+import CreateProposal  from '../components/CreateProposal';
 
-export const FormContainer = ({handleSubmit,input}) => {
+const FormContainer = ({handleSubmit,input}) => {
 
   return (
     <CreateProposal
       handleSubmit={handleSubmit}
-      <input {...input} placeholder={label} type={type}/>
+
     />
 
   );
@@ -18,10 +18,4 @@ export const FormContainer = ({handleSubmit,input}) => {
 
 
 
-
-
-const formConfiguration = {
-  form: 'main'
-}
-
-export default reduxForm(formConfiguration)(FormContainer);
+export default FormContainer

@@ -1,16 +1,17 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,RECEIVE_PROPOSAL } from '../actions/constants'
+import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS } from '../actions/constants'
 
 
 const initialState= {
   proposals:[],
   loadingProposal:true,
-  addProposal:false
+  addProposal:false,
+  showDetails:false
 }
 
 function mainReducer(state=initialState,action) {
-
+console.log('action type ', action.type)
   switch(action.type) {
 
     case ADD_PROPOSAL:
@@ -34,11 +35,13 @@ function mainReducer(state=initialState,action) {
         return Object.assign({},state , {
            loadingProposal:true
         })
+    case SHOW_DETAILS:
+      return Object.assign({}, state, {
+         showDetails:true
+      })
     default:
         return state;
   }
-
-
 
 }
 

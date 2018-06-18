@@ -1,12 +1,11 @@
 
 
-import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL} from './constants'
+import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS} from './constants'
 
 export function addProposal(){
 
   return (dispatch, getState) => {
   const form = getState().form;
-
     const proposal = {
       name:form.proposal.values.name,
       description:form.proposal.values.description,
@@ -20,13 +19,11 @@ export function addProposal(){
 
 }
 
-
 export function startProposalAdd() {
     return {
        type: START_PROPOSAL_ADD
     }
 }
-
 
 export function requestProposals(){
     return (dispatch)=>{
@@ -42,12 +39,15 @@ export function requestProposals(){
   }
 }
 
-
 export function receiveProposal(proposals) {
-
     return {
        type: RECEIVE_PROPOSAL,
        proposals
     }
+}
 
+export function showDetails(){
+   return{
+        type:'SHOW_DETAILS'
+   }
 }

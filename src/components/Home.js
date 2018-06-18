@@ -2,6 +2,9 @@ import React , { Component } from 'react';
 import { Container, Divider} from 'semantic-ui-react';
 import CreateProposal from './CreateProposal';
 import ProposalListContainer from '../containers/ProposalListContainer';
+import {connect } from 'react-redux';
+
+
 
 class Home extends Component {
       render(){
@@ -24,4 +27,9 @@ const mainContainer = {
     marginTop: '15px'
 }
 
-export default Home
+const mapStateToProps = (state) => ({
+    addProposal:state.main.addProposal
+})
+
+
+export default connect(mapStateToProps)(Home)
