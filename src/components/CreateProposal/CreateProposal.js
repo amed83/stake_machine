@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import { Button} from 'semantic-ui-react';
+import { Button,Input} from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
-import {addProposal} from '../actions/index';
-
+import {addProposal} from '../../actions/index';
+import classes from './CreateProposal.css'
 
 const formStyle = {
     display:"flex",
@@ -10,10 +10,7 @@ const formStyle = {
     width:"70%"
 }
 
-const mainContainer = {
-  display:"flex",
-  justifyContent:"center"
-}
+
 
 const errorMessage = {
    color:"red",
@@ -42,8 +39,8 @@ const validate = (values )=> {
 
 const renderField = ({input,placeholder, meta:{touched, error}})=> (
 
-      <div>
-          <input {...input} placeholder={placeholder}/>
+      <div className={classes.InputForm} >
+          <Input {...input} placeholder={placeholder}/>
 
           <div style = {errorMessage} >
               {touched && error && <span> {error}</span>}
@@ -54,9 +51,9 @@ const renderField = ({input,placeholder, meta:{touched, error}})=> (
 const CreateProposal = ({handleSubmit, input}) => {
 
      return(
-       <div style= {mainContainer}>
+       <div className={classes.MainContainer}>
 
-           <form onSubmit={handleSubmit} style={formStyle}>
+           <form onSubmit={handleSubmit}  >
                <Field
                  name="name"
                  component={renderField}

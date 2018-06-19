@@ -1,0 +1,12 @@
+.MainContainer{
+   display: flex;
+
+}
+
+.InputForm{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, List} from 'semantic-ui-react';
-import Challenge from './Challenge';
-import Vote from './Vote';
+import Challenge from './Challenge/Challenge';
+import Vote from './Vote/Vote';
 
 
 const Details = (props)=> {

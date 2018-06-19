@@ -1,0 +1,12 @@
+.MainContainer{
+    margin-top:15px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.TitleContainer{
+      display:flex;
+      justify-content: center;
+      position:relative;
+}

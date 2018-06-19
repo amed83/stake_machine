@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import React, { Component} from 'react';
-import { startProposalAdd,requestProposals,showDetails } from '../actions/index';
+import { startProposalAdd,requestProposals,showDetails } from '../../actions/index';
 import { Button} from 'semantic-ui-react';
-import ProposalList from '../components/ProposalList'
+import ProposalList from '../../components/ProposalList/ProposalList'
 
 
 class ProposalListContainer extends Component{
