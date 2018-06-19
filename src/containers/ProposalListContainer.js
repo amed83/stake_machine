@@ -7,23 +7,18 @@ import ProposalList from '../components/ProposalList'
 
 class ProposalListContainer extends Component{
 
-componentWillMount(){
+  componentWillMount(){
 
-   if(!this.props.proposals ||!this.props.proposals.length ){
+     if(!this.props.proposals ||!this.props.proposals.length ){
 
-      this.props.requestProposals()
-   }
-}
-  handleShowDetails(){
-    this.props.showDetails()
+        this.props.requestProposals()
+     }
   }
-  render() {
-  
-      return(
 
+  render() {
+    return(
             <div>
                 <ProposalList {...this.props}/>
-                <Button secondary onClick={this.handleShowDetails.bind(this)}>Details </Button>
             </div>
       )
     }
@@ -37,11 +32,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => ({
   requestProposals: ()=> dispatch(requestProposals()),
-  onAdd: ()=>dispatch(startProposalAdd()),
-  showDetails:()=>dispatch(showDetails())
+  onAdd: ()=>dispatch(startProposalAdd())
 
 })
-
 
 export default connect(
   mapStateToProps,

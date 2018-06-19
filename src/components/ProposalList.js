@@ -11,7 +11,6 @@ const ProposalList = ({proposals, onAdd }) => {
      <Proposal
           key= {proposal.name + proposal.description}
           {...proposal}
-
       />
   ))
 
@@ -24,6 +23,7 @@ const ProposalList = ({proposals, onAdd }) => {
               </div>
                 <div  style= {listContainer}>
                     {proposalNodes}
+
                 </div>
             </Container >
 

@@ -1,6 +1,6 @@
 
 
-import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS} from './constants'
+import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS,HIDE_DETAILS} from './constants'
 
 export function addProposal(){
 
@@ -31,8 +31,8 @@ export function requestProposals(){
           type: REQUEST_PROPOSALS
        })
     const exampleProposal = [{
-       "name": "Hello Machine",
-       "description": "This great example",
+       "name": "This is an Example of Proposal",
+       "description": "This is a useless proposal",
        "stakes":40
     }]
     dispatch(receiveProposal(exampleProposal))
@@ -46,8 +46,15 @@ export function receiveProposal(proposals) {
     }
 }
 
-export function showDetails(){
+export function showDetails(details){
    return{
-        type:'SHOW_DETAILS'
+        type:SHOW_DETAILS,
+        details
+   }
+}
+
+export function hideDetails(){
+   return{
+        type:HIDE_DETAILS
    }
 }

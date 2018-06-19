@@ -81,7 +81,6 @@ const CreateProposal = ({handleSubmit, input}) => {
 
 
 const onSubmit = (values, dispatch) => {
-  console.log('inside onSubmit ', dispatch)
    dispatch(addProposal())
 };
 
