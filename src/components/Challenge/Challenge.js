@@ -5,7 +5,7 @@ import classes from './Challenge.css'
 const Challenge = ()=> {
     return(
 
-        <Button className={classes.Button}> Challenge  </Button>
+        <Button color='orange'> Challenge  </Button>
     )
 }
 

@@ -1,5 +1,5 @@
 import React , { Component } from 'react';
-import { Container, Divider} from 'semantic-ui-react';
+import {Divider} from 'semantic-ui-react';
 import CreateProposal from '../../components/CreateProposal/CreateProposal';
 import ProposalListContainer from '../../containers/ProposalListContainer/ProposalListContainer';
 import {connect } from 'react-redux';

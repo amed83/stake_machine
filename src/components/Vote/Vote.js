@@ -4,7 +4,7 @@ import {Button } from 'semantic-ui-react';
 const Vote = ()=> {
     return(
 
-        <Button> Vote </Button>
+        <Button color='green'> Vote </Button>
     )
 }
 

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Container, Button, Divider } from 'semantic-ui-react'
+import { Button,} from 'semantic-ui-react'
 import classes from './ProposalList.css'
 import Proposal from '../Proposal'
 
@@ -27,15 +27,6 @@ const ProposalList = ({proposals, onAdd }) => {
               </div>
          </div>
      )
-
-
 }
-
-
-const buttonStyle = {
-marginBottom:'20px'
-}
-
-
 
 export default ProposalList

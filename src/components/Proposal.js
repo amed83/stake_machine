@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import { List, Button, Divider } from 'semantic-ui-react';
 import {showDetails } from '../actions/index';
 import { connect } from 'react-redux';
-import Details  from './Details'
-
 
 class Proposal extends Component{
       handleShowDetails(){
         this.props.showDetails({...this.props})
       }
-
       render(){
         const {name, description, stakes} = this.props
          return(
@@ -18,16 +15,13 @@ class Proposal extends Component{
                      <List.Item><b>Name:</b> {name }   </List.Item>
                      <List.Item> <b>Description:</b> {description }  </List.Item>
                      <List.Item><b>Stakes:</b> { stakes}   </List.Item>
-                     <Button secondary onClick={this.handleShowDetails.bind(this)}>Details </Button>
+                     <Button color='grey' onClick={this.handleShowDetails.bind(this)}>Details </Button>
                        <Divider />
                  </List>
 
            </div>
-
-
           )
       }
-
 }
 
 

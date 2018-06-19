@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Button, List} from 'semantic-ui-react';
+
 import {hideDetails} from '../actions/index'
 import Details from '../components/Details'
 

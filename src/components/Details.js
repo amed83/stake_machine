@@ -13,7 +13,7 @@ const Details = (props)=> {
                     <List.Item><b>Name:</b> {name}   </List.Item>
                     <List.Item> <b>Description:</b> {description}  </List.Item>
                     <List.Item><b>Stakes:</b> {stakes}   </List.Item>
-                    <Button secondary onClick={onHide} >Hide Details </Button>
+                    <Button color='grey' onClick={onHide} >Hide Details </Button>
               </List>
               <Challenge />
               <Vote />

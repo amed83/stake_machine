@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component} from 'react';
-import { startProposalAdd,requestProposals,showDetails } from '../../actions/index';
-import { Button} from 'semantic-ui-react';
+import { startProposalAdd,requestProposals} from '../../actions/index';
 import ProposalList from '../../components/ProposalList/ProposalList'
 
 
@@ -22,7 +21,6 @@ class ProposalListContainer extends Component{
             </div>
       )
     }
-
  }
 
 

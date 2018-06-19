@@ -25,6 +25,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "gulp": "^3.9.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "20.0.4",
     "object-assign": "4.1.1",
@@ -54,12 +55,15 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+    "build-semantic": "cd src/semantic && gulp build-css build-assets",
+    "watch-semantic": "cd src/semantic && npm run build-semantic && gulp watch",
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
-    "redux-devtools-extension": "^2.13.2"
+    "redux-devtools-extension": "^2.13.2",
+    "semantic-ui": "^2.3.2"
   },
   "jest": {
     "collectCoverageFrom": [

@@ -1,15 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Button,Input} from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import {addProposal} from '../../actions/index';
 import classes from './CreateProposal.css'
-
-const formStyle = {
-    display:"flex",
-    justifyContent:"space-between",
-    width:"70%"
-}
-
 
 
 const errorMessage = {
