@@ -7,7 +7,6 @@ import Details from '../components/Details'
 class DetailsContainer extends Component {
     render(){
         return(
-
               <Details {...this.props} />
         )
 
