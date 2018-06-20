@@ -1,6 +1,6 @@
 
 
-import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS,HIDE_DETAILS} from './constants'
+import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS,HIDE_DETAILS,OPEN_POPUP} from './constants'
 
 export function addProposal(){
 
@@ -57,4 +57,10 @@ export function hideDetails(){
    return{
         type:HIDE_DETAILS
    }
+}
+
+export function openPopup(){
+  return{
+    type:OPEN_POPUP
+  }
 }

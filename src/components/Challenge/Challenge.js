@@ -1,13 +1,36 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {Button } from 'semantic-ui-react';
 import classes from './Challenge.css'
+import {connect} from 'react-redux';
+import {openPopup} from '../../actions/index'
+import ChallengePopup from '../../containers/ChallengePopup/ChallengePopup'
 
-const Challenge = ()=> {
-    return(
+class Challenge extends Component {
 
-        <Button color='orange'> Challenge  </Button>
-    )
+  handlePopup(){
+      this.props.onOpenPopup()
+  }
+
+  render(){
+
+    const child = this.props.popup ? <ChallengePopup /> : ""
+      return(
+             <div>
+               <Button color='orange'onClick={this.handlePopup.bind(this)}> Challenge  </Button>
+               {child}
+           </div>
+          )
+  }
 }
 
 
-export default Challenge
+const mapStateToProps = state => ({
+  popup:state.main.popup,
+  popupContent:state.main.popupContent
+})
+
+const mapDispatchToProps = dispatch=> ({
+    onOpenPopup: ()=> dispatch(openPopup())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Challenge)
