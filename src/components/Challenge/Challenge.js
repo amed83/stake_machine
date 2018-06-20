@@ -7,6 +7,10 @@ import ChallengePopup from '../../containers/ChallengePopup/ChallengePopup'
 
 class Challenge extends Component {
 
+  componentWillReceiveProps(nextProps){
+      console.log(' componen t ill receive ', nextProps)
+  }
+
   handlePopup(){
       this.props.onOpenPopup()
   }
@@ -25,8 +29,7 @@ class Challenge extends Component {
 
 
 const mapStateToProps = state => ({
-  popup:state.main.popup,
-  popupContent:state.main.popupContent
+  popup:state.main.popup
 })
 
 const mapDispatchToProps = dispatch=> ({

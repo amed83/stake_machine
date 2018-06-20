@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS, HIDE_DETAILS,OPEN_POPUP } from '../actions/constants'
+import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS, HIDE_DETAILS,OPEN_POPUP,CREATE_CHALLENGE } from '../actions/constants'
 
 
 const initialState= {
@@ -10,7 +10,7 @@ const initialState= {
   showDetails:false,
   details:{},
   popup:false,
-  popupContent:[]
+  challenges:[]
 }
 
 function mainReducer(state=initialState,action) {
@@ -48,9 +48,16 @@ function mainReducer(state=initialState,action) {
        })
     case OPEN_POPUP:
      return Object.assign({}, state, {
-        popup:true,
-        popupContent:'hello opup'
-         })
+        popup:true
+     })
+     case CREATE_CHALLENGE:
+      return Object.assign({},state,{
+         challenges:[
+           ...state.challenges,
+           action.challenge.content
+         ],
+         popup:false
+      })
     default:
         return state;
   }

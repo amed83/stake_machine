@@ -1,6 +1,6 @@
 
 
-import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS,HIDE_DETAILS,OPEN_POPUP} from './constants'
+import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS,HIDE_DETAILS,OPEN_POPUP,CREATE_CHALLENGE} from './constants'
 
 export function addProposal(){
 
@@ -16,7 +16,6 @@ export function addProposal(){
        proposal
     })
   }
-
 }
 
 export function startProposalAdd() {
@@ -62,5 +61,18 @@ export function hideDetails(){
 export function openPopup(){
   return{
     type:OPEN_POPUP
+  }
+}
+
+export function createChallenge(){
+  return(dispatch,getState)=>{
+      const form = getState().form
+      const challenge = {
+          content:form.challenge.values.challenge
+      }
+      dispatch({
+        type:CREATE_CHALLENGE,
+        challenge
+      })
   }
 }

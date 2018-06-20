@@ -12,8 +12,14 @@
 
 
 .InnerContainer {
-
-   width:35%;
+  margin-top: 25px;
    display: flex;
-   justify-content: space-between;
+   justify-content: space-around;
+}
+
+.OuterContainer{
+    width: 26%;
+    height: 28%;
+    border-radius: 8px;
+    background-color: rgb(230, 231, 230);
 }

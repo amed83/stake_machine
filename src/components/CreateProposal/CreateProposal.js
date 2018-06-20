@@ -71,6 +71,7 @@ const CreateProposal = ({handleSubmit, input}) => {
 
 
 const onSubmit = (values, dispatch) => {
+
    dispatch(addProposal())
 };
 

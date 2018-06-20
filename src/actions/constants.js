@@ -5,3 +5,4 @@ export const RECEIVE_PROPOSAL = 'RECEIVE_PROPOSAL';
 export const SHOW_DETAILS = 'SHOW_DETAILS';
 export const HIDE_DETAILS = 'HIDE_DETAILS';
 export const OPEN_POPUP = 'OPEN_POPUP';
+export const CREATE_CHALLENGE = 'CREATE_CHALLENGE';
