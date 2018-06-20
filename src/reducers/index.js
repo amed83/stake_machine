@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS, HIDE_DETAILS,OPEN_POPUP,CREATE_CHALLENGE } from '../actions/constants'
+import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,
+        RECEIVE_PROPOSAL,SHOW_DETAILS, HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
+        CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE } from '../actions/constants'
 
 
 const initialState= {
@@ -9,8 +11,10 @@ const initialState= {
   addProposal:false,
   showDetails:false,
   details:{},
-  popup:false,
-  challenges:[]
+  challengePopup:false,
+  votePopup:false,
+  challenges:[],
+  votes:[]
 }
 
 function mainReducer(state=initialState,action) {
@@ -46,18 +50,32 @@ function mainReducer(state=initialState,action) {
        return Object.assign({}, state, {
           showDetails:false
        })
-    case OPEN_POPUP:
+    case OPEN_CHALLENGE_POPUP:
      return Object.assign({}, state, {
-        popup:true
+        challengePopup:true
      })
      case CREATE_CHALLENGE:
+
       return Object.assign({},state,{
          challenges:[
            ...state.challenges,
            action.challenge.content
          ],
-         popup:false
+         challengePopup:false
       })
+      case OPEN_VOTE_POPUP:
+      return Object.assign({}, state, {
+         votePopup:true
+      })
+      case VOTE:
+
+       return Object.assign({},state,{
+          votes:[
+            ...state.votes,
+            action.vote.result
+          ],
+          votePopup:false
+       })
     default:
         return state;
   }

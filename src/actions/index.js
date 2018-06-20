@@ -1,6 +1,8 @@
 
 
-import {ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,SHOW_DETAILS,HIDE_DETAILS,OPEN_POPUP,CREATE_CHALLENGE} from './constants'
+import {
+ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,
+SHOW_DETAILS,HIDE_DETAILS,OPEN_CHALLENGE_POPUP,CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE} from './constants'
 
 export function addProposal(){
 
@@ -58,9 +60,9 @@ export function hideDetails(){
    }
 }
 
-export function openPopup(){
+export function openChallengePopup(){
   return{
-    type:OPEN_POPUP
+    type:OPEN_CHALLENGE_POPUP
   }
 }
 
@@ -73,6 +75,25 @@ export function createChallenge(){
       dispatch({
         type:CREATE_CHALLENGE,
         challenge
+      })
+  }
+}
+
+export function openVotePopup(){
+      return{
+        type:OPEN_VOTE_POPUP
+      }
+}
+
+export function vote(){
+  return(dispatch,getState)=>{
+      const form = getState().form
+      const vote = {
+          result:form.vote.values.voting
+      }
+      dispatch({
+        type:VOTE,
+        vote
       })
   }
 }

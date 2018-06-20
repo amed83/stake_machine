@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import {Button } from 'semantic-ui-react';
-import classes from './Challenge.css'
 import {connect} from 'react-redux';
-import {openPopup} from '../../actions/index'
-import ChallengePopup from '../../containers/ChallengePopup/ChallengePopup'
+import {openChallengePopup} from '../../actions/index'
+import ChallengePopup from '../../components/ChallengePopup/ChallengePopup'
 
-class Challenge extends Component {
+class ChallengeContainer extends Component {
 
   componentWillReceiveProps(nextProps){
       console.log(' componen t ill receive ', nextProps)
@@ -17,7 +16,7 @@ class Challenge extends Component {
 
   render(){
 
-    const child = this.props.popup ? <ChallengePopup /> : ""
+    const child = this.props.challengePopup? <ChallengePopup /> : ""
       return(
              <div>
                <Button color='orange'onClick={this.handlePopup.bind(this)}> Challenge  </Button>
@@ -29,11 +28,11 @@ class Challenge extends Component {
 
 
 const mapStateToProps = state => ({
-  popup:state.main.popup
+  challengePopup:state.main.challengePopup
 })
 
 const mapDispatchToProps = dispatch=> ({
-    onOpenPopup: ()=> dispatch(openPopup())
+    onOpenPopup: ()=> dispatch(openChallengePopup())
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(Challenge)
+export default connect(mapStateToProps,mapDispatchToProps)(ChallengeContainer)

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, List} from 'semantic-ui-react';
-import Challenge from '../Challenge/Challenge';
-import Vote from '../Vote/Vote';
+import ChallengeContainer from '../../containers/ChallengeContainer/ChallengeContainer';
+import VoteContainer from '../../containers/VoteContainer/VoteContainer';
 import classes from './Details.css'
 
 const Details = (props)=> {
@@ -16,8 +16,8 @@ const Details = (props)=> {
                     <Button color='grey' onClick={onHide} >Hide Details </Button>
               </List>
               <div className={classes.Buttons}>
-                    <Challenge />
-                    <Vote />
+                    <ChallengeContainer />
+                    <VoteContainer />
               </div>
 
           </div>
