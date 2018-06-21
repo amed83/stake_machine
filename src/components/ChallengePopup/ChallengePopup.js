@@ -5,7 +5,8 @@ import { Field, reduxForm } from 'redux-form';
 import {createChallenge} from '../../actions/index'
 import ClosePopupContainer from '../../containers/ClosePopupContainer/ClosePopupContainer'
 
-const ChallengePopup =({handleSubmit,input}) => {
+const ChallengePopup =({handleSubmit,input,id}) => {
+
       return(
             <div>
               <form onSubmit={handleSubmit} className={classes.ModalWrapper}>
@@ -32,9 +33,9 @@ const renderField =({input,placeholder,meta:{touched,error}}) =>(
     </div>
 )
 
-const onSubmit= (values,dispatch)=> {
+const onSubmit= (values,dispatch,id)=> {
 
-  dispatch(createChallenge())
+  dispatch(createChallenge(id.id))
 }
 
 export default reduxForm({

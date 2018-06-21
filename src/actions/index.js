@@ -1,9 +1,11 @@
 
-
 import {
 ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,
 SHOW_DETAILS,HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
-CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,CLOSE_VOTE_POPUP,CLOSE_CHALLENGE_POPUP} from './constants'
+CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,
+CLOSE_VOTE_POPUP,CLOSE_CHALLENGE_POPUP,FIND_BY_ID} from './constants'
+
+let id = 1
 
 export function addProposal(){
 
@@ -12,8 +14,9 @@ export function addProposal(){
     const proposal = {
       name:form.proposal.values.name,
       description:form.proposal.values.description,
-      stakes:form.proposal.values.stakes
-    };
+      stakes:form.proposal.values.stakes,
+      id:id ++
+    }
     dispatch({
        type: ADD_PROPOSAL,
        proposal
@@ -35,7 +38,8 @@ export function requestProposals(){
     const exampleProposal = [{
        "name": "This is an Example of Proposal",
        "description": "This is a useless proposal",
-       "stakes":40
+       "stakes":40,
+       "id":0
     }]
     dispatch(receiveProposal(exampleProposal))
   }
@@ -67,12 +71,15 @@ export function openChallengePopup(){
   }
 }
 
-export function createChallenge(){
+export function createChallenge(getId){
+
   return(dispatch,getState)=>{
       const form = getState().form
       const challenge = {
-          content:form.challenge.values.challenge
+          content:form.challenge.values.challenge,
+          id:getId
       }
+
       dispatch({
         type:CREATE_CHALLENGE,
         challenge
@@ -109,4 +116,12 @@ export function closeChallengePopup(){
     return {
       type:CLOSE_CHALLENGE_POPUP
     }
+}
+
+export function findById(id){
+       return {
+         type:FIND_BY_ID,
+         id
+       }
+
 }

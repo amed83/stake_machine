@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
 import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,
         RECEIVE_PROPOSAL,SHOW_DETAILS, HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
-        CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,CLOSE_VOTE_POPUP,CLOSE_CHALLENGE_POPUP } from '../actions/constants'
+        CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,CLOSE_VOTE_POPUP,
+        CLOSE_CHALLENGE_POPUP,FIND_BY_ID } from '../actions/constants'
 
 
 const initialState= {
@@ -18,8 +19,8 @@ const initialState= {
 }
 
 function mainReducer(state=initialState,action) {
-
   switch(action.type) {
+
     case ADD_PROPOSAL:
     return Object.assign({}, state, {
        addProposal:false,
@@ -58,12 +59,12 @@ function mainReducer(state=initialState,action) {
       return Object.assign({},state,{
          challenges:[
            ...state.challenges,
-           action.challenge.content
-         ],
-         challengePopup:false
+         { content:action.challenge.content,
+            id:action.challenge.id,}],
+          challengePopup:false
       })
       case OPEN_VOTE_POPUP:
-      return Object.assign({}, state, {
+       return Object.assign({}, state, {
          votePopup:true
       })
       case VOTE:
@@ -84,7 +85,17 @@ function mainReducer(state=initialState,action) {
             ...state,
             challengePopup:false
           }
-    default:
+        case FIND_BY_ID:
+        if(state.challenges){
+          const {challenges}= state
+          const proposalToFind= challenges.filter(challenge => challenge.id ==action.id)
+
+        }
+
+        return{
+          ...state
+        }
+        default:
         return state;
   }
 

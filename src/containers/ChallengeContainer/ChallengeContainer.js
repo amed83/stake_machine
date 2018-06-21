@@ -11,8 +11,8 @@ class ChallengeContainer extends Component {
   }
 
   render(){
-
-    const child = this.props.challengePopup? <ChallengePopup /> : ""
+    const {id} = this.props
+    const child = this.props.challengePopup? <ChallengePopup id={id}/> : ""
       return(
              <div>
                <Button color='orange'onClick={this.handlePopup.bind(this)}> Challenge  </Button>

@@ -6,7 +6,7 @@ import ProposalContainer from '../../containers/ProposalContainer/ProposalContai
 
 
 const ProposalList = ({proposals, onAdd }) => {
-
+  console.log('proposals ', proposals)
   const proposalNodes = proposals.map(proposal =>(
 
      <ProposalContainer

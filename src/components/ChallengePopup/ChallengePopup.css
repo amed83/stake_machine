@@ -22,4 +22,5 @@
     height: 28%;
     border-radius: 8px;
     background-color: rgb(230, 231, 230);
+    z-index:9999;
 }

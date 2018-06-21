@@ -3,20 +3,13 @@ import { Button, List} from 'semantic-ui-react';
 import ChallengeContainer from '../../containers/ChallengeContainer/ChallengeContainer';
 import VoteContainer from '../../containers/VoteContainer/VoteContainer';
 import classes from './Details.css'
+import FindById from '../../containers/FindById/FindById'
+
 
 const Details = (props)=> {
-    console.log(' Details challenge', props)
-   const {name,description,stakes} = props.details
-   const {onHide}= props
-   let challenges=[];
-   if(props.challenges){
-      challenges = props.challenges.map((challenge,index)=>{
-          return(
-            <li key= {index}>{challenge}</li>
-          )
 
-      })
-   }
+   const {name,description,stakes,id} = props.details
+   const {onHide}= props
 
     return(
           <div>
@@ -25,13 +18,16 @@ const Details = (props)=> {
                         <List.Item><b>Name:</b> {name}   </List.Item>
                         <List.Item> <b>Description:</b> {description}  </List.Item>
                         <List.Item><b>Stakes:</b> {stakes}   </List.Item>
-                        <List.Item><b>{challenges.length>0 ? 'Challenges :': ""}</b> {challenges}   </List.Item>
+                        <List.Item><b>Id:</b> {id}   </List.Item>
                     </div>
                     <Button color='grey' onClick={onHide} >Hide Details </Button>
               </List>
               <div className={classes.Buttons}>
-                    <ChallengeContainer />
+                    <ChallengeContainer id={id}/>
                     <VoteContainer />
+              </div>
+              <div className={classes.FindById}>
+                      <FindById />
               </div>
 
           </div>
