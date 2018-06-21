@@ -2,14 +2,14 @@
 import React from 'react';
 import { Button,} from 'semantic-ui-react'
 import classes from './ProposalList.css'
-import Proposal from '../Proposal'
+import ProposalContainer from '../../containers/ProposalContainer/ProposalContainer'
 
 
 const ProposalList = ({proposals, onAdd }) => {
 
   const proposalNodes = proposals.map(proposal =>(
 
-     <Proposal
+     <ProposalContainer
           key= {proposal.name + proposal.description}
           {...proposal}
       />

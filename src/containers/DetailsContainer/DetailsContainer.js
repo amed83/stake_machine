@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {hideDetails} from '../actions/index'
-import Details from '../components/Details/Details'
+import {hideDetails} from '../../actions/index'
+import Details from '../../components/Details/Details'
 
 class DetailsContainer extends Component {
     render(){
@@ -13,7 +13,8 @@ class DetailsContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-    details:state.main.details
+    details:state.main.details,
+    challenges:state.main.challenges
 })
 
 const mapDispatchToProps = dispatch => ({

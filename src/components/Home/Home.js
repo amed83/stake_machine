@@ -3,7 +3,7 @@ import {Divider} from 'semantic-ui-react';
 import CreateProposal from '../../components/CreateProposal/CreateProposal';
 import ProposalListContainer from '../../containers/ProposalListContainer/ProposalListContainer';
 import {connect } from 'react-redux';
-import DetailsContainer from '../../containers/DetailsContainer'
+import DetailsContainer from '../../containers/DetailsContainer/DetailsContainer'
 import classes from './Home.css'
 
 class Home extends Component {

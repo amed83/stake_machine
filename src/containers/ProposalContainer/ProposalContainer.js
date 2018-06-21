@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { List, Button, Divider } from 'semantic-ui-react';
-import {showDetails } from '../actions/index';
+import {showDetails } from '../../actions/index';
 import { connect } from 'react-redux';
 
-class Proposal extends Component{
+class ProposalContainer extends Component{
       handleShowDetails(){
         this.props.showDetails({...this.props})
       }
@@ -33,4 +33,4 @@ const mapDispatchToProps = (dispatch,values) => ({
     showDetails: ()=>dispatch(showDetails(values))
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)   (Proposal)
+export default connect(mapStateToProps,mapDispatchToProps)(ProposalContainer)

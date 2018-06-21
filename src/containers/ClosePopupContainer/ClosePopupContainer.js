@@ -10,16 +10,13 @@ class ClosePopupContainer extends Component {
       if(this.props.popup==="vote"){
         this.props.closeVotePopup()
       }
-
       this.props.closeChallengePopup()
 
     }
     render(){
-      console.log(' close popupContainer ', this.props)
       return(
           <Icon name ='close' onClick={this.closePopup.bind(this)} className={classes.Icon} />
-      )
-
+       )
     }
 }
 

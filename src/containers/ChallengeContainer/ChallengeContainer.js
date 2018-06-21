@@ -6,10 +6,6 @@ import ChallengePopup from '../../components/ChallengePopup/ChallengePopup'
 
 class ChallengeContainer extends Component {
 
-  componentWillReceiveProps(nextProps){
-      console.log(' componen t ill receive ', nextProps)
-  }
-
   handlePopup(){
       this.props.onOpenPopup()
   }

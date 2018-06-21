@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Button, Dropdown } from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
 import classes from './VotePopup.css';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import {vote} from '../../actions/index'
@@ -23,7 +23,6 @@ let VotePopup =({handleSubmit,value}) => {
                           <div className={classes.CloseIcon}>
                               <ClosePopupContainer popup="vote"/>
                           </div>
-
                     </div>
                 </div>
               </form>
@@ -33,27 +32,23 @@ let VotePopup =({handleSubmit,value}) => {
 }
 
 
-
 const onSubmit= (values,dispatch)=> {
-
-  dispatch(vote())
-}
-
-VotePopup = reduxForm({
-  form:'vote',
-  onSubmit
-})(VotePopup)
+      dispatch(vote())
+    }
+    VotePopup = reduxForm({
+      form:'vote',
+      onSubmit
+    })(VotePopup)
 
 const selector = formValueSelector('vote')
 
-VotePopup = connect(
-  state => {
-    const voteExpressed = selector(state, 'voting')
-
-    return {
-      voteExpressed
+  VotePopup = connect(
+    state => {
+      const voteExpressed = selector(state, 'voting')
+      return {
+        voteExpressed
+      }
     }
-  }
-)(VotePopup)
+  )(VotePopup)
 
 export default VotePopup

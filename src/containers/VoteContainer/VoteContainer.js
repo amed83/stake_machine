@@ -5,9 +5,7 @@ import {openVotePopup} from '../../actions/index'
 import VotePopup from '../../components/VotePopup/VotePopup'
 
 class VoteContainer extends Component {
-      componentWillReceiveProps(nextProps){
-          console.log(' componen t ill receive ', nextProps)
-      }
+    
       handlePopup(){
           this.props.openVotePopup()
       }

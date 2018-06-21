@@ -1,4 +1,9 @@
 .Buttons{
     display: flex;
-    
+
+}
+
+
+.DetailsList{
+  margin-bottom:35px;
 }
