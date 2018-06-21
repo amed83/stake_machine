@@ -4,6 +4,7 @@ import classes from './VotePopup.css';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import {vote} from '../../actions/index'
 import {connect}  from 'react-redux'
+import ClosePopupContainer from '../../containers/ClosePopupContainer/ClosePopupContainer'
 
 let VotePopup =({handleSubmit,value}) => {
 
@@ -11,13 +12,18 @@ let VotePopup =({handleSubmit,value}) => {
             <div>
               <form onSubmit={handleSubmit} className={classes.ModalWrapper}>
                 <div className={classes.OuterContainer}>
+                  <h3 className={classes.Title}>Express your vote </h3>
                     <div className={classes.InnerContainer}>
-                    <Field name="voting" component="select">
+                    <Field className={classes.FieldOption} name="voting" component="select">
                           <option></option>
                           <option value ='yes'>Yes</option>
                           <option value ='no'>No</option>
                     </Field>
                           <Button size= 'small'color= 'green' type = "submit">Submit</Button>
+                          <div className={classes.CloseIcon}>
+                              <ClosePopupContainer popup="vote"/>
+                          </div>
+
                     </div>
                 </div>
               </form>
@@ -26,25 +32,7 @@ let VotePopup =({handleSubmit,value}) => {
 
 }
 
-// const DropdownFormField= props=> (
-//    <Field>
-//    <Dropdown text= "Wanna vote ? ">
-//        <Dropdown.Menu>
-//            <Dropdown.Item text= "Yes"/>
-//            <Dropdown.Item text = "No"/>
-//        </Dropdown.Menu>
-//    </Dropdown >
-//
-//
-//    </Field>
-// )
 
-// <Dropdown text= "Wanna vote ? " name='voting'>
-//     <Dropdown.Menu>
-//         <Dropdown.Item text= "Yes" {...value} />
-//         <Dropdown.Item text = "No" value= 'no'/>
-//     </Dropdown.Menu>
-// </Dropdown >
 
 const onSubmit= (values,dispatch)=> {
 
@@ -69,13 +57,3 @@ VotePopup = connect(
 )(VotePopup)
 
 export default VotePopup
-
-// const onSubmit= (values,dispatch)=> {
-//   console.log('values ', values )
-//   dispatch(vote())
-// }
-//
-// export default reduxForm({
-//   form:'challenge',
-//   onSubmit
-// })(VotePopup)

@@ -5,26 +5,21 @@ import {openVotePopup} from '../../actions/index'
 import VotePopup from '../../components/VotePopup/VotePopup'
 
 class VoteContainer extends Component {
-
-  componentWillReceiveProps(nextProps){
-      console.log(' componen t ill receive ', nextProps)
-  }
-
-  handlePopup(){
-      this.props.openVotePopup()
-  }
-
-  render(){
-
-    const child = this.props.votePopup ? <VotePopup /> : ""
-    console.log('child ', child)
-      return(
-             <div>
-               <Button color='yellow'onClick={this.handlePopup.bind(this)}>Vote </Button>
-               {child}
-           </div>
-          )
-  }
+      componentWillReceiveProps(nextProps){
+          console.log(' componen t ill receive ', nextProps)
+      }
+      handlePopup(){
+          this.props.openVotePopup()
+      }
+      render(){
+        const child = this.props.votePopup ? <VotePopup /> : ""
+          return(
+                 <div>
+                   <Button color='yellow'onClick={this.handlePopup.bind(this)}>Vote </Button>
+                   {child}
+               </div>
+              )
+      }
 }
 
 

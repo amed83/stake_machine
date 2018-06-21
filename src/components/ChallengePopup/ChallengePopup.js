@@ -3,7 +3,7 @@ import { Input, Button } from 'semantic-ui-react';
 import classes from './ChallengePopup.css';
 import { Field, reduxForm } from 'redux-form';
 import {createChallenge} from '../../actions/index'
-
+import ClosePopupContainer from '../../containers/ClosePopupContainer/ClosePopupContainer'
 
 const ChallengePopup =({handleSubmit,input}) => {
 
@@ -18,6 +18,7 @@ const ChallengePopup =({handleSubmit,input}) => {
                           placeholder="write here your challenge"
                           />
                           <Button size= 'small'color= 'green' type = "submit">Submit</Button>
+                          <ClosePopupContainer popup= "challenge" />
                     </div>
                 </div>
               </form>

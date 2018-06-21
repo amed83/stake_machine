@@ -2,7 +2,8 @@
 
 import {
 ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,
-SHOW_DETAILS,HIDE_DETAILS,OPEN_CHALLENGE_POPUP,CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE} from './constants'
+SHOW_DETAILS,HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
+CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,CLOSE_VOTE_POPUP,CLOSE_CHALLENGE_POPUP} from './constants'
 
 export function addProposal(){
 
@@ -96,4 +97,16 @@ export function vote(){
         vote
       })
   }
+}
+
+export function closeVotePopup(){
+    return {
+      type:CLOSE_VOTE_POPUP
+    }
+}
+
+export function closeChallengePopup(){
+    return {
+      type:CLOSE_CHALLENGE_POPUP
+    }
 }

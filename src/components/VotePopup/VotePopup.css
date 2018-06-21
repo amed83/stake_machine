@@ -18,8 +18,28 @@
 }
 
 .OuterContainer{
+    position:relative;
     width: 26%;
     height: 28%;
     border-radius: 8px;
     background-color: rgb(230, 231, 230);
+}
+
+.FieldOption{
+   background-color: RGBA(31, 201, 231, 0.5);
+   width:80px;
+   border-radius:4px;
+}
+
+.Title{
+  display: flex;
+  justify-content: center;
+  padding-top: 2em;
+}
+
+
+.CloseIcon{
+  position:absolute;
+  top: 5%;
+  left:93%;
 }
