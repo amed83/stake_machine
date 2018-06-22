@@ -3,7 +3,8 @@ import {
 ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,
 SHOW_DETAILS,HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
 CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,
-CLOSE_VOTE_POPUP,CLOSE_CHALLENGE_POPUP,FIND_BY_ID} from './constants'
+CLOSE_VOTE_POPUP,CLOSE_CHALLENGE_POPUP,
+FIND_BY_ID,SHOW_CHALLENGE_BY_ID} from './constants'
 
 let id = 1
 
@@ -119,9 +120,22 @@ export function closeChallengePopup(){
 }
 
 export function findById(id){
-       return {
-         type:FIND_BY_ID,
-         id
-       }
+       return(dispatch,getState) =>{
+          dispatch({
+            type:FIND_BY_ID,
+             id
+          })
+          const state = getState()
+          let challengesById = state.main.challengesById
 
+          dispatch(showChallengeById(challengesById))
+       }
+}
+
+export function showChallengeById(challengesById){
+
+       return{
+           type:SHOW_CHALLENGE_BY_ID,
+           challengesById
+       }
 }

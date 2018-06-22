@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form'
 import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,
         RECEIVE_PROPOSAL,SHOW_DETAILS, HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
         CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,CLOSE_VOTE_POPUP,
-        CLOSE_CHALLENGE_POPUP,FIND_BY_ID } from '../actions/constants'
+        CLOSE_CHALLENGE_POPUP,FIND_BY_ID,SHOW_CHALLENGE_BY_ID } from '../actions/constants'
 
 
 const initialState= {
@@ -15,20 +15,22 @@ const initialState= {
   challengePopup:false,
   votePopup:false,
   challenges:[],
-  votes:[]
+  votes:[],
+  challengesById:[],
+  showChallengesList:false
 }
 
 function mainReducer(state=initialState,action) {
   switch(action.type) {
 
     case ADD_PROPOSAL:
-    return Object.assign({}, state, {
-       addProposal:false,
-       proposals:[
-         ...state.proposals,
-         action.proposal
-       ]
-    })
+      return Object.assign({}, state, {
+         addProposal:false,
+         proposals:[
+           ...state.proposals,
+           action.proposal
+         ]
+      })
     case START_PROPOSAL_ADD:
       return Object.assign({}, state, {
         addProposal:true
@@ -49,7 +51,8 @@ function mainReducer(state=initialState,action) {
       })
     case HIDE_DETAILS:
        return Object.assign({}, state, {
-          showDetails:false
+          showDetails:false,
+          showChallengesList:false
        })
     case OPEN_CHALLENGE_POPUP:
      return Object.assign({}, state, {
@@ -80,21 +83,28 @@ function mainReducer(state=initialState,action) {
           ...state,
           votePopup:false
         }
-        case CLOSE_CHALLENGE_POPUP:
-          return {
-            ...state,
-            challengePopup:false
-          }
-        case FIND_BY_ID:
+      case CLOSE_CHALLENGE_POPUP:
+        return {
+          ...state,
+          challengePopup:false
+        }
+      case FIND_BY_ID:
+        let challengesById;
         if(state.challenges){
           const {challenges}= state
-          const proposalToFind= challenges.filter(challenge => challenge.id ==action.id)
-
+          challengesById= challenges.filter(challenge => challenge.id ==action.id)
         }
-
         return{
-          ...state
+          ...state,
+          challengesById
         }
+      case SHOW_CHALLENGE_BY_ID:
+
+          return{
+            ...state,
+            showChallengesList:true
+          }
+
         default:
         return state;
   }

@@ -14,7 +14,8 @@ class DetailsContainer extends Component {
 
 const mapStateToProps = state => ({
     details:state.main.details,
-    challenges:state.main.challenges
+    challengesById:state.main.challengesById,
+    showChallengesList:state.main.showChallengesList
 })
 
 const mapDispatchToProps = dispatch => ({
