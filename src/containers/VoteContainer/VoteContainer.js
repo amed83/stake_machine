@@ -5,12 +5,14 @@ import {openVotePopup} from '../../actions/index'
 import VotePopup from '../../components/VotePopup/VotePopup'
 
 class VoteContainer extends Component {
-    
+
       handlePopup(){
           this.props.openVotePopup()
       }
       render(){
-        const child = this.props.votePopup ? <VotePopup /> : ""
+        const {id} = this.props
+
+        const child = this.props.votePopup ? <VotePopup id={id}/> : ""
           return(
                  <div>
                    <Button color='yellow'onClick={this.handlePopup.bind(this)}>Vote </Button>

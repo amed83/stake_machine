@@ -3,7 +3,9 @@ import { reducer as formReducer } from 'redux-form'
 import { ADD_PROPOSAL, START_PROPOSAL_ADD,REQUEST_PROPOSALS,
         RECEIVE_PROPOSAL,SHOW_DETAILS, HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
         CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,CLOSE_VOTE_POPUP,
-        CLOSE_CHALLENGE_POPUP,FIND_BY_ID,SHOW_CHALLENGE_BY_ID } from '../actions/constants'
+        CLOSE_CHALLENGE_POPUP,FIND_BY_ID,SHOW_CHALLENGE_BY_ID,SHOW_VOTE_BY_ID,
+        SHOW_VOTES_BY_ID }
+        from '../actions/constants'
 
 
 const initialState= {
@@ -17,7 +19,9 @@ const initialState= {
   challenges:[],
   votes:[],
   challengesById:[],
-  showChallengesList:false
+  showChallengesList:false,
+  votesById:[],
+  showVotesList:false
 }
 
 function mainReducer(state=initialState,action) {
@@ -52,7 +56,8 @@ function mainReducer(state=initialState,action) {
     case HIDE_DETAILS:
        return Object.assign({}, state, {
           showDetails:false,
-          showChallengesList:false
+          showChallengesList:false,
+          showVotesList:false
        })
     case OPEN_CHALLENGE_POPUP:
      return Object.assign({}, state, {
@@ -74,7 +79,8 @@ function mainReducer(state=initialState,action) {
        return Object.assign({},state,{
           votes:[
             ...state.votes,
-            action.vote.result
+            {vote:action.vote.result,
+            id:action.vote.id}
           ],
           votePopup:false
        })
@@ -89,20 +95,37 @@ function mainReducer(state=initialState,action) {
           challengePopup:false
         }
       case FIND_BY_ID:
-        let challengesById;
-        if(state.challenges){
-          const {challenges}= state
-          challengesById= challenges.filter(challenge => challenge.id ==action.id)
+
+        if(!action.isVote){
+          let challengesById;
+          if(state.challenges){
+            const {challenges}= state
+            challengesById=challenges.filter(challenge => challenge.id == action.id)
+          }
+          return{
+            ...state,
+            challengesById
+          }
         }
-        return{
+        let votesById;
+        if(state.votes){
+          const {votes} = state
+          votesById=votes.filter(vote => vote.id == action.id)
+        }
+        return {
           ...state,
-          challengesById
+          votesById
         }
       case SHOW_CHALLENGE_BY_ID:
-
           return{
             ...state,
             showChallengesList:true
+          }
+      case SHOW_VOTES_BY_ID:
+          console.log('actio show vote')
+          return{
+            ...state,
+            showVotesList:true
           }
 
         default:

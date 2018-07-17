@@ -9,7 +9,9 @@ const ShowChallengesById = (props) => {
            : <span className={classes.Error}>No Challenges found</span>
 
       return(
-            <List.Item>{show && (challengesByIdList || challengesByIdList.length> 0) ? <div><b>Challenges : </b>{challengesByIdList}</div>: ''}</List.Item>
+            <List.Item>
+              {show && (challengesByIdList || challengesByIdList.length> 0) ? <div><b>Challenges : </b>{challengesByIdList}</div>: ''}
+            </List.Item>
       )
 
 }

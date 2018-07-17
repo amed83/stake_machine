@@ -4,7 +4,7 @@ ADD_PROPOSAL,START_PROPOSAL_ADD, REQUEST_PROPOSALS,RECEIVE_PROPOSAL,
 SHOW_DETAILS,HIDE_DETAILS,OPEN_CHALLENGE_POPUP,
 CREATE_CHALLENGE,OPEN_VOTE_POPUP,VOTE,
 CLOSE_VOTE_POPUP,CLOSE_CHALLENGE_POPUP,
-FIND_BY_ID,SHOW_CHALLENGE_BY_ID} from './constants'
+FIND_BY_ID,SHOW_CHALLENGE_BY_ID,SHOW_VOTES_BY_ID} from './constants'
 
 let id = 1
 
@@ -94,11 +94,12 @@ export function openVotePopup(){
       }
 }
 
-export function vote(){
+export function vote(getId){
   return(dispatch,getState)=>{
       const form = getState().form
       const vote = {
-          result:form.vote.values.voting
+          result:form.vote.values.voting,
+          id:getId
       }
       dispatch({
         type:VOTE,
@@ -120,15 +121,27 @@ export function closeChallengePopup(){
 }
 
 export function findById(id){
+      //selecting if the id is coming from challenge or vote query
+      let isVote = false
+      if(typeof(id)=== 'object'){
+        id = id.voteId
+        isVote= true
+      }
        return(dispatch,getState) =>{
           dispatch({
             type:FIND_BY_ID,
-             id
+             id,
+             isVote
           })
           const state = getState()
-          let challengesById = state.main.challengesById
-
-          dispatch(showChallengeById(challengesById))
+          if(!isVote){
+            let challengesById = state.main.challengesById
+            dispatch(showChallengeById(challengesById))
+            return;
+          }
+           let votesById = state.main.votesById
+           console.log('it never get here',votesById)
+           dispatch(showVotesById(votesById))
        }
 }
 
@@ -138,4 +151,12 @@ export function showChallengeById(challengesById){
            type:SHOW_CHALLENGE_BY_ID,
            challengesById
        }
+}
+
+export function showVotesById(votesById){
+       console.log('votesById ', votesById)
+      return{
+         type:SHOW_VOTES_BY_ID,
+         votesById
+      }
 }

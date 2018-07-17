@@ -6,8 +6,7 @@ import {vote} from '../../actions/index'
 import {connect}  from 'react-redux'
 import ClosePopupContainer from '../../containers/ClosePopupContainer/ClosePopupContainer'
 
-let VotePopup =({handleSubmit,value}) => {
-
+let VotePopup =({handleSubmit,value,id}) => {
       return(
             <div>
               <form onSubmit={handleSubmit} className={classes.ModalWrapper}>
@@ -32,8 +31,9 @@ let VotePopup =({handleSubmit,value}) => {
 }
 
 
-const onSubmit= (values,dispatch)=> {
-      dispatch(vote())
+const onSubmit= (values,dispatch,id)=> {
+
+      dispatch(vote(id.id))
     }
     VotePopup = reduxForm({
       form:'vote',

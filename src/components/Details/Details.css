@@ -3,12 +3,10 @@
 
 }
 
-
 .DetailsList{
   margin-bottom:35px;
 
 }
-
 
 .CreateChallenge{
     display: flex;
@@ -18,5 +16,9 @@
 }
 
 .FindById{
-   margin-top: 13px;
+   display:flex;
+   flex-direction: column;
+   justify-content:space-evenly;
+  
+   height: 120px;
 }
