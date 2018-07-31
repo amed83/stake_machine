@@ -6,7 +6,6 @@ import {createChallenge} from '../../actions/index'
 import ClosePopupContainer from '../../containers/ClosePopupContainer/ClosePopupContainer'
 
 const ChallengePopup =({handleSubmit,input,id}) => {
-
       return(
             <div>
               <form onSubmit={handleSubmit} className={classes.ModalWrapper}>
